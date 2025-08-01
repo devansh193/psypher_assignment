@@ -1,8 +1,10 @@
 import { AuthButton } from "@/modules/auth/components/ui/auth-button";
 import { Upgrade } from "./upgrade";
 import Link from "next/link";
+import { useUser } from "@clerk/nextjs";
 
 export const Navbar = () => {
+  const { user } = useUser();
   return (
     <nav className="fixed top-0 left-0 right-0 h-14 flex items-center justify-between px-2 z-50 w-full bg-transparent backdrop-blur-md max-w-7xl mx-auto">
       <Link href={"/"} className="text-lg font-bold">
@@ -10,7 +12,7 @@ export const Navbar = () => {
       </Link>
 
       <div className="flex-shrink-0 items-center flex gap-4">
-        <Upgrade />
+        {user && <Upgrade />}
         <AuthButton />
       </div>
     </nav>

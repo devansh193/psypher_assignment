@@ -1,8 +1,13 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { UserCircleIcon } from "lucide-react";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 export const AuthButton = () => {
   return (
@@ -11,11 +16,18 @@ export const AuthButton = () => {
         <UserButton />
       </SignedIn>
       <SignedOut>
-        <SignInButton mode="modal">
-          <Button variant={"outline"} className="flex">
-            <UserCircleIcon className="size-3" /> Sign in
-          </Button>
-        </SignInButton>
+        <div className="flex gap-2 items-center">
+          <SignUpButton>
+            <Button variant={"outline"} size={"sm"}>
+              Sign up
+            </Button>
+          </SignUpButton>
+          <SignInButton>
+            <Button variant={"default"} size={"sm"}>
+              Sign in
+            </Button>
+          </SignInButton>
+        </div>
       </SignedOut>
     </>
   );
