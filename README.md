@@ -254,19 +254,3 @@ Make sure all required environment variables are set:
 - `POST /api/tier` - Set initial user tier to "free"
 - `POST /api/upgrade` - Upgrade user tier
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Commit your changes: `git commit -am 'Add new feature'`
-4. Push to the branch: `git push origin feature/new-feature`
-5. Submit a pull request
-
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) for the React framework
-- [Clerk.dev](https://clerk.dev/) for authentication
-- [Tailwind CSS](https://tailwindcss.com/) for styling
-- [Drizzle ORM](https://orm.drizzle.team/) for database management
-- [TanStack React Query](https://tanstack.com/query) for data fetching
