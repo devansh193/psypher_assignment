@@ -66,7 +66,7 @@ export const EventCard = ({
 
       <div className="absolute bottom-0 z-20 w-full p-4 text-white space-y-1">
         <h3 className="text-lg font-semibold">{title}</h3>
-        <p className="text-sm line-clamp-2 text-muted-foreground">
+        <p className="text-sm line-clamp-1 text-muted-foreground">
           {description}
         </p>
         <div className="text-xs opacity-80 mt-2 space-y-0.5">

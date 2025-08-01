@@ -1,6 +1,6 @@
 "use client";
 import { MainLayout } from "@/modules/main/layout";
-import { useSession, useUser } from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 import { useEffect, useRef } from "react";
 
 interface LayoutProps {
@@ -9,20 +9,20 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const { isLoaded: userLoaded, user, isSignedIn } = useUser();
-  const { isLoaded: sessionLoaded, session } = useSession();
   const processedUsers = useRef(new Set<string>());
 
   useEffect(() => {
     const checkTier = async () => {
-      if (userLoaded && sessionLoaded && isSignedIn && user && session) {
-        const tier = session?.lastActiveToken?.jwt?.claims?.tier;
-        console.log("User tier:", tier);
-        console.log("User ID:", user.id);
+      if (userLoaded && isSignedIn && user) {
+        const tier = user.publicMetadata?.tier;
         const userId = user.id;
         if (!tier && !processedUsers.current.has(userId)) {
           try {
             await fetch("/api/tier", {
               method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
               body: JSON.stringify({ userId }),
             });
             processedUsers.current.add(userId);
@@ -32,10 +32,10 @@ const Layout = ({ children }: LayoutProps) => {
         }
       }
     };
-    if (userLoaded && sessionLoaded && isSignedIn && user) {
+    if (userLoaded && isSignedIn && user) {
       checkTier();
     }
-  }, [userLoaded, sessionLoaded, isSignedIn, user, session]);
+  }, [userLoaded, isSignedIn, user]);
 
   return <MainLayout>{children}</MainLayout>;
 };

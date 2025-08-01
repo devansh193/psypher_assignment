@@ -41,7 +41,7 @@ const EventSectionSuspense = () => {
           eventDate={event.eventDate}
           time={event.time}
           location={event.location}
-          price={10}
+          price={parseInt(event.price)}
           tags={event.tags || []}
           imageUrl={event.image_url}
           tier={event.tier}

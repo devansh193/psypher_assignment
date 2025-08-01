@@ -3,9 +3,7 @@ import { randomUUID } from "crypto";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import { eventTable } from "./schema";
-import { time } from "console";
 
-// Initialize database connection
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL is not set in the environment variables.");
 }
@@ -37,7 +35,7 @@ const seedEvents = async () => {
       title: "Silver Workshop: Advanced JavaScript",
       description:
         "Deep dive into advanced JavaScript concepts including closures, prototypes, and async programming patterns.",
-      eventDate: new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000), // 3 days from now
+      eventDate: new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000),
       time: "14:00",
       location: "Tech Hub",
       price: "20",
